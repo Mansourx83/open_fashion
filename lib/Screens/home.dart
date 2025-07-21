@@ -27,7 +27,6 @@ class _HomeState extends State<Home> {
             top: 10,
             left: 0,
             right: 0,
-
             child: SvgPicture.asset("assets/texts/10.svg"),
           ),
           Positioned(
@@ -43,30 +42,40 @@ class _HomeState extends State<Home> {
             child: SvgPicture.asset("assets/texts/Collection.svg"),
           ),
 
-          Column(
-            children: [
-              Gap(120),
-              Image.asset('assets/cover/cover1.png'),
-              Gap(20),
-              GridView.builder(
-                itemCount: ProductModel.products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Gap(120),
+                Image.asset('assets/cover/cover1.png'),
+                Gap(20),
+
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: ProductModel.products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 0,
+                    crossAxisSpacing: 15,
+                    childAspectRatio: 0.50,
+                  ),
+                  itemBuilder: (context, index) {
+                    final item = ProductModel.products[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(item.image),
+                        Gap(10),
+                        CustomText(text: item.name),
+                        CustomText(text: item.description, size: 12),
+                        CustomText(text: item.price.toString()),
+                      ],
+                    );
+                  },
                 ),
-                itemBuilder: (context, index) {
-                  final item = ProductModel.products[index];
-                  Column(
-                    children: [
-                      Image.asset(item.image),
-                      Gap(10),
-                      CustomText(text: item.name),
-                      CustomText(text: item.description),
-                      CustomText(text: item.price.toString()),
-                    ],
-                  );
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
