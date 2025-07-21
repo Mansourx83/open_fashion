@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:open_fashion/core/colors.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
 
@@ -39,8 +40,14 @@ class _HomeState extends State<Home> {
             right: 0,
             child: SvgPicture.asset("assets/texts/Collection.svg"),
           ),
-       
-       
+
+          Column(
+            children: [
+              Gap(120),
+              Image.asset('assets/cover/cover1.png'),
+              Gap(20),
+            ],
+          ),
         ],
       ),
     );
