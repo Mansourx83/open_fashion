@@ -1,0 +1,37 @@
+name: open_fashion
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.0
+
+dependencies:
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.2.0
+  gap: ^3.0.1
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/cover/
+    - assets/logo/
+    - assets/product/
+    - assets/svgs/
+    - assets/pop/
+    - assets/texts/
+
+  fonts:
+    - family: "TenorSans"
+      fonts:
+        - asset: assets/fonts/Tenor_Sans/TenorSans-Regular.ttf
