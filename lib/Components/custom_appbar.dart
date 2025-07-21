@@ -4,14 +4,14 @@ import 'package:gap/gap.dart';
 import 'package:open_fashion/Components/colors.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppbar({super.key, this.isBlackk});
-  final isBlackk;
+  const CustomAppbar({super.key, this.isBlack});
+  final isBlack;
   @override
   Size get preferredSize => const Size.fromHeight(80);
 
   @override
   Widget build(BuildContext context) {
-    bool isBlack = isBlackk;
+    bool isBlacks = isBlack;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: AppBar(

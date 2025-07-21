@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(isBlackk: true),
+      appBar: CustomAppbar(isBlack: true),
       backgroundColor: AppColors.primary,
     );
   }
