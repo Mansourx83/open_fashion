@@ -44,37 +44,57 @@ class _HomeState extends State<Home> {
 
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                Gap(120),
-                Image.asset('assets/cover/cover1.png'),
-                Gap(20),
-
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: ProductModel.products.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 0,
-                    crossAxisSpacing: 15,
-                    childAspectRatio: 0.50,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Column(
+                children: [
+                  Gap(120),
+                  Image.asset('assets/cover/cover1.png'),
+                  Gap(20),
+                  GridView.builder(
+                    padding: EdgeInsets.all(0),
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: ProductModel.products.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 0,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 0.50,
+                    ),
+                    itemBuilder: (context, index) {
+                      final item = ProductModel.products[index];
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(item.image),
+                          Gap(10),
+                          CustomText(text: item.name),
+                          CustomText(
+                            text: item.description,
+                            size: 12,
+                            color: Colors.grey,
+                          ),
+                          CustomText(
+                            text: "\$ ${item.price.toString()}",
+                            color: const Color.fromARGB(189, 239, 154, 154),
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                  itemBuilder: (context, index) {
-                    final item = ProductModel.products[index];
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(item.image),
-                        Gap(10),
-                        CustomText(text: item.name),
-                        CustomText(text: item.description, size: 12),
-                        CustomText(text: item.price.toString()),
-                      ],
-                    );
-                  },
-                ),
-              ],
+
+                  CustomText(
+                    text: 'You may also like'.toUpperCase(),
+                    fontWeight: FontWeight.bold,
+                    size: 24,
+                  ),
+                  Image.asset('assets/svgs/line.png', width: 200),
+                  Gap(20),
+
+                  Gap(200),
+                ],
+              ),
             ),
           ),
         ],

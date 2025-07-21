@@ -20,7 +20,7 @@ class ProductModel {
           "An elegant women's abaya suitable for any occasion. This abaya is made with soft, breathable fabric that provides comfort while maintaining a sophisticated look. Perfect for formal gatherings or casual wear, offering both style and modesty.",
     ),
     ProductModel(
-      name: "Gold Ring from Lazurde",
+      name: "Gold Ring ",
       image: "assets/product/product4.png",
       price: 249.99,
       description:
@@ -41,7 +41,7 @@ class ProductModel {
           "Elegant and practical black boots for daily wear. Made from high-quality leather, these boots offer both durability and comfort. They feature a timeless design that works well with both casual and semi-formal attire, making them an essential part of any wardrobe.",
     ),
     ProductModel(
-      name: "Diamond Ring from Lazurde",
+      name: "Diamond Ring ",
       image: "assets/product/product5.png",
       price: 799.99,
       description:
