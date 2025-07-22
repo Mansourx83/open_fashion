@@ -21,6 +21,7 @@ class Headr extends StatelessWidget {
           ),
         ),
         Image.asset('assets/svgs/line.png', width: 200, color: Colors.black),
+        Gap(20),
       ],
     );
   }

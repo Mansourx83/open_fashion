@@ -27,6 +27,7 @@ class CustomText extends StatelessWidget {
         color: color,
         fontWeight: fontWeight,
         fontFamily: "TenorSans",
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
