@@ -8,9 +8,11 @@ class CustomText extends StatelessWidget {
     this.maxline = 1,
     this.color = Colors.white,
     this.fontWeight = FontWeight.normal,
+    this.spacing = 1,
   });
   final String text;
   final double size;
+  final double spacing;
   final int maxline;
   final Color color;
   final FontWeight fontWeight;
@@ -20,6 +22,7 @@ class CustomText extends StatelessWidget {
       text,
       maxLines: maxline,
       style: TextStyle(
+        letterSpacing: spacing,
         fontSize: size,
         color: color,
         fontWeight: fontWeight,

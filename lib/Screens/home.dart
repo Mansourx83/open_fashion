@@ -5,6 +5,7 @@ import 'package:open_fashion/Components/about_section.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Models/covers_model.dart';
 import 'package:open_fashion/Models/product_model.dart';
+import 'package:open_fashion/Screens/checkout.dart';
 import 'package:open_fashion/core/colors.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
 
@@ -70,22 +71,42 @@ class _HomeState extends State<Home> {
                         ),
                         itemBuilder: (context, index) {
                           final item = ProductModel.products[index];
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(item.image),
-                              Gap(10),
-                              CustomText(text: item.name),
-                              CustomText(
-                                text: item.description,
-                                size: 12,
-                                color: Colors.grey,
+                          return GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Checkout(
+                                    name: item.name,
+                                    image: item.image,
+                                    price: item.price,
+                                    description: item.description,
+                                  );
+                                },
                               ),
-                              CustomText(
-                                text: "\$ ${item.price.toString()}",
-                                color: const Color.fromARGB(189, 239, 154, 154),
-                              ),
-                            ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(item.image),
+                                Gap(10),
+                                CustomText(text: item.name),
+                                CustomText(
+                                  text: item.description,
+                                  size: 12,
+                                  color: Colors.grey,
+                                ),
+                                CustomText(
+                                  text: "\$ ${item.price.toString()}",
+                                  color: const Color.fromARGB(
+                                    189,
+                                    239,
+                                    154,
+                                    154,
+                                  ),
+                                ),
+                              ],
+                            ),
                           );
                         },
                       ),
@@ -153,4 +174,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
