@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:open_fashion/Components/custom_text.dart';
@@ -22,6 +24,7 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   int number = 1;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
