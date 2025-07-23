@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
+import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
 import 'package:open_fashion/core/colors.dart';
@@ -36,7 +37,7 @@ class PlaceOrder extends StatelessWidget {
             child: CustomText(
               text: 'Shipping address'.toUpperCase(),
               color: Colors.grey,
-              size: 13,
+              size: 14,
             ),
           ),
 
@@ -83,6 +84,59 @@ class PlaceOrder extends StatelessWidget {
           ),
           Gap(10),
           customContainer('Add shipping address', Icons.add, false),
+          Gap(40),
+          ////Shipping Method
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CustomText(
+              text: 'Shipping Method'.toUpperCase(),
+              color: Colors.grey,
+              size: 14,
+            ),
+          ),
+          Gap(10),
+          customContainer('Pickup at store', Icons.keyboard_arrow_down, true),
+          Gap(40),
+          ////Payment Method
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: CustomText(
+              text: 'Payment method'.toUpperCase(),
+              color: Colors.grey,
+              size: 14,
+            ),
+          ),
+          Gap(10),
+          customContainer(
+            'select payment method',
+            Icons.keyboard_arrow_down,
+            false,
+          ),
+          Spacer(),
+          ////total row
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: 'Total'.toUpperCase(),
+                  spacing: 3,
+                  size: 15,
+                  color: AppColors.primary,
+                ),
+                CustomText(
+                  text: "\$ ${total.round()}",
+                  color: const Color.fromARGB(189, 239, 154, 154),
+                  size: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
+          ),
+          Gap(8),
+          ////place order butten
+          CustomButton(fonudSvg: true, text: 'Place order'),
         ],
       ),
     );

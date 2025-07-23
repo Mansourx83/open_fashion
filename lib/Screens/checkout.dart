@@ -62,13 +62,13 @@ class _CheckoutState extends State<Checkout> {
                 CustomText(
                   text: 'Est. Total'.toUpperCase(),
                   spacing: 3,
-                  size: 15,
+                  size: 14,
                   color: AppColors.primary,
                 ),
                 CustomText(
                   text: "\$ ${((widget.price * selectedValue).round())}",
                   color: const Color.fromARGB(189, 239, 154, 154),
-                  size: 15,
+                  size: 17,
                   fontWeight: FontWeight.bold,
                 ),
               ],
