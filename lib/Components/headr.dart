@@ -6,6 +6,7 @@ import 'package:open_fashion/core/colors.dart';
 class Headr extends StatelessWidget {
   const Headr({super.key, required this.title});
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,9 +16,9 @@ class Headr extends StatelessWidget {
           child: CustomText(
             text: title.toUpperCase(),
             fontWeight: FontWeight.bold,
-            size: 18,
+            size: 16,
             color: AppColors.primary,
-            spacing: 10,
+            spacing: 5,
           ),
         ),
         Image.asset('assets/svgs/line.png', width: 200, color: Colors.black),
