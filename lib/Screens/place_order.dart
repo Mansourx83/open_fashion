@@ -7,6 +7,7 @@ import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
 import 'package:open_fashion/Components/shipping_method.dart';
 import 'package:open_fashion/Screens/add_address.dart';
+import 'package:open_fashion/Screens/add_card.dart';
 import 'package:open_fashion/core/colors.dart';
 
 class PlaceOrder extends StatefulWidget {
@@ -120,10 +121,20 @@ class _PlaceOrderState extends State<PlaceOrder> {
             ),
           ),
           Gap(10),
-          customContainer(
-            'select payment method',
-            Icons.keyboard_arrow_down,
-            false,
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return AddCard();
+                },
+              ),
+            ),
+            child: customContainer(
+              'select payment method',
+              Icons.keyboard_arrow_down,
+              false,
+            ),
           ),
           Spacer(),
           ////total row
