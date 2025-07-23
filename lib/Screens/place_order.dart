@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:open_fashion/Components/address_display.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
 import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
+import 'package:open_fashion/Components/shipping_method.dart';
 import 'package:open_fashion/Screens/add_address.dart';
 import 'package:open_fashion/core/colors.dart';
 
@@ -47,8 +49,8 @@ class _PlaceOrderState extends State<PlaceOrder> {
     }
   }
 
-  void _editAddress() {
-    Navigator.push(
+  void _editAddress() async {
+    final newAddress = await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
@@ -56,6 +58,10 @@ class _PlaceOrderState extends State<PlaceOrder> {
         },
       ),
     );
+
+    setState(() {
+      _savedAddress = newAddress;
+    });
   }
 
   @override
@@ -82,48 +88,9 @@ class _PlaceOrderState extends State<PlaceOrder> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _savedAddress != null
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomText(
-                                text:
-                                    '${_savedAddress['firstName']}${_savedAddress['lastName']}',
-                                color: AppColors.primary,
-                                size: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              CustomText(
-                                text: _savedAddress['address'],
-                                color: Colors.black87,
-                                size: 14,
-                              ),
-                              Gap(2),
-                              CustomText(
-                                text: _savedAddress['city'],
-                                color: Colors.black87,
-                                size: 14,
-                              ),
-                              Gap(2),
-                              CustomText(
-                                text: _savedAddress['phone'],
-                                color: Colors.black54,
-                                size: 14,
-                              ),
-                            ],
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              return _editAddress();
-                            },
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
+                    ? AddressInfo(
+                        savedAddress: _savedAddress,
+                        onTap: _editAddress,
                       )
                     : SizedBox.shrink(),
               ],
@@ -142,19 +109,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                   ),
                 )
               : SizedBox.shrink(),
-          Gap(40),
-          ////Shipping Method
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomText(
-              text: 'Shipping Method'.toUpperCase(),
-              color: Colors.grey,
-              size: 14,
-            ),
-          ),
-          Gap(10),
-          customContainer('Pickup at store', Icons.keyboard_arrow_down, true),
-          Gap(40),
+          ShippingMethod(),
           ////Payment Method
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
