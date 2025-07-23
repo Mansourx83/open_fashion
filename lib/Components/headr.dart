@@ -15,7 +15,7 @@ class Headr extends StatelessWidget {
           child: CustomText(
             text: title.toUpperCase(),
             fontWeight: FontWeight.bold,
-            size: 24,
+            size: 20,
             color: AppColors.primary,
             spacing: 10,
           ),

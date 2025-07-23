@@ -7,6 +7,7 @@ import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
 import 'package:open_fashion/Components/quantity.dart';
+import 'package:open_fashion/Screens/place_order.dart';
 import 'package:open_fashion/core/colors.dart';
 
 class Checkout extends StatefulWidget {
@@ -27,6 +28,8 @@ class Checkout extends StatefulWidget {
 }
 
 class _CheckoutState extends State<Checkout> {
+  int selectedValue = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +44,11 @@ class _CheckoutState extends State<Checkout> {
               image: widget.image,
               price: widget.price,
               description: widget.description,
+              onCanged: (v) {
+                setState(() {
+                  selectedValue = v;
+                });
+              },
             ),
           ),
           promo(),
@@ -58,7 +66,7 @@ class _CheckoutState extends State<Checkout> {
                   color: AppColors.primary,
                 ),
                 CustomText(
-                  text: "\$ ${widget.price.toString()}",
+                  text: "\$ ${((widget.price * selectedValue).round())}",
                   color: const Color.fromARGB(189, 239, 154, 154),
                   size: 15,
                   fontWeight: FontWeight.bold,
@@ -67,7 +75,27 @@ class _CheckoutState extends State<Checkout> {
             ),
           ),
           Gap(8),
-          CustomButton(fonudSvg: true, text: 'Checkout', onTap: () {}),
+          CustomButton(
+            fonudSvg: true,
+            text: 'Checkout',
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return PlaceOrder(
+                      name: widget.name,
+                      image: widget.image,
+                      price: widget.price,
+                      total: widget.price * selectedValue,
+                      description: widget.description,
+                      quantity: selectedValue,
+                    );
+                  },
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

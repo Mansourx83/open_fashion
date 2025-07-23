@@ -13,11 +13,11 @@ class Cart extends StatefulWidget {
     required this.image,
     required this.price,
     required this.description,
+    required this.onCanged,
   });
-  final String name;
-  final String image;
+  final String name, image, description;
   final double price;
-  final String description;
+  final Function onCanged;
   @override
   State<Cart> createState() => _CartState();
 }
@@ -60,6 +60,7 @@ class _CartState extends State<Cart> {
                     setState(() {
                       if (number > 1) {
                         number--;
+                        widget.onCanged(number);
                       }
                     });
                   },
@@ -77,6 +78,7 @@ class _CartState extends State<Cart> {
                   onTap: () {
                     setState(() {
                       number++;
+                      widget.onCanged(number);
                     });
                   },
                   svg: 'assets/svgs/plus.svg',
