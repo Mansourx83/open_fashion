@@ -5,6 +5,7 @@ import 'package:open_fashion/Components/custom_appbar.dart';
 import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
+import 'package:open_fashion/Screens/add_address.dart';
 import 'package:open_fashion/core/colors.dart';
 
 class PlaceOrder extends StatelessWidget {
@@ -83,7 +84,13 @@ class PlaceOrder extends StatelessWidget {
             ),
           ),
           Gap(10),
-          customContainer('Add shipping address', Icons.add, false),
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddAddress()),
+            ),
+            child: customContainer('Add shipping address', Icons.add, false),
+          ),
           Gap(40),
           ////Shipping Method
           Padding(
