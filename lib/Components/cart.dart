@@ -14,16 +14,25 @@ class Cart extends StatefulWidget {
     required this.price,
     required this.description,
     required this.onCanged,
+    required this.qty,
   });
   final String name, image, description;
   final double price;
   final Function onCanged;
+  final int qty;
   @override
   State<Cart> createState() => _CartState();
 }
 
 class _CartState extends State<Cart> {
-  int number = 1;
+  late int number;
+
+  @override
+  void initState() {
+    number = 1;
+    number = widget.qty;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

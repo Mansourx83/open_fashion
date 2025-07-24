@@ -49,6 +49,7 @@ class _CheckoutState extends State<Checkout> {
                   selectedValue = v;
                 });
               },
+              qty: selectedValue,
             ),
           ),
           promo(),

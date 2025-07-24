@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:open_fashion/Components/address_display.dart';
+import 'package:open_fashion/Components/cart.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
 import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_text.dart';
@@ -35,6 +36,12 @@ class PlaceOrder extends StatefulWidget {
 class _PlaceOrderState extends State<PlaceOrder> {
   dynamic _savedAddress;
   dynamic _savedcardData;
+  late int selectedQty;
+  @override
+  void initState() {
+    selectedQty = widget.quantity;
+    super.initState();
+  }
 
   ///Address Data
   void _openAddress(context) async {
@@ -108,14 +115,16 @@ class _PlaceOrderState extends State<PlaceOrder> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Headr(title: 'Checkout'),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomText(
-              text: 'Shipping address'.toUpperCase(),
-              color: Colors.grey,
-              size: 14,
-            ),
-          ),
+          _savedAddress != null && _savedcardData != null
+              ? SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomText(
+                    text: 'Shipping address'.toUpperCase(),
+                    color: Colors.grey,
+                    size: 14,
+                  ),
+                ),
 
           ////address flow
           Padding(
@@ -145,16 +154,20 @@ class _PlaceOrderState extends State<PlaceOrder> {
                   ),
                 )
               : SizedBox.shrink(),
-          ShippingMethod(),
+          _savedAddress == null && _savedcardData == null
+              ? ShippingMethod()
+              : SizedBox.shrink(),
           ////Payment Method
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomText(
-              text: 'Payment method'.toUpperCase(),
-              color: Colors.grey,
-              size: 14,
-            ),
-          ),
+          _savedAddress != null && _savedcardData != null
+              ? SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: CustomText(
+                    text: 'Payment method'.toUpperCase(),
+                    color: Colors.grey,
+                    size: 14,
+                  ),
+                ),
           Gap(10),
           _savedcardData != null
               ? Padding(
@@ -203,6 +216,22 @@ class _PlaceOrderState extends State<PlaceOrder> {
                     false,
                   ),
                 ),
+          /////Cart Widget if have data
+          Gap(20),
+          _savedAddress != null && _savedcardData != null
+              ? Cart(
+                  name: widget.name,
+                  image: widget.image,
+                  price: widget.price,
+                  description: widget.description,
+                  onCanged: (quantity) {
+                    setState(() {
+                      selectedQty = quantity;
+                    });
+                  },
+                  qty: widget.quantity,
+                )
+              : SizedBox.shrink(),
           Spacer(),
           ////total row
           Padding(
@@ -217,7 +246,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
                   color: AppColors.primary,
                 ),
                 CustomText(
-                  text: "\$ ${widget.total.round()}",
+                  text: "\$ ${((widget.price * selectedQty).round())}",
                   color: const Color.fromARGB(189, 239, 154, 154),
                   size: 17,
                   fontWeight: FontWeight.bold,
