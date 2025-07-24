@@ -6,15 +6,16 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final bool isEnabled;
-  final String? Function(String?)? validator;  
-
-   const CustomTextField({
+  final String? Function(String?)? validator;
+  final int? max;
+  const CustomTextField({
     super.key,
     required this.label,
     required this.controller,
     required this.focusNode,
     this.isEnabled = true,
-    this.validator,  
+    this.validator,
+    this.max,
   });
 
   InputDecoration _buildInputDecoration(FocusNode focusNode) {
@@ -40,6 +41,7 @@ class CustomTextField extends StatelessWidget {
         decoration: _buildInputDecoration(focusNode),
         enabled: isEnabled,
         validator: validator,
+        maxLength: max,
       ),
     );
   }

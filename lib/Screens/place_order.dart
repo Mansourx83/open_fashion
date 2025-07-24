@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:open_fashion/Components/address_display.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
@@ -35,6 +36,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
   dynamic _savedAddress;
   dynamic _savedcardData;
 
+  ///Address Data
   void _openAddress(context) async {
     final addressData = await Navigator.push(
       context,
@@ -66,6 +68,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
     });
   }
 
+  ///Card Data
   void _openCard(context) async {
     final cardData = await Navigator.push(
       context,
@@ -80,6 +83,21 @@ class _PlaceOrderState extends State<PlaceOrder> {
         _savedcardData = cardData;
       });
     }
+  }
+
+  void _editCard() async {
+    final newCard = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return AddCard(editData: _savedcardData);
+        },
+      ),
+    );
+
+    setState(() {
+      _savedcardData = newCard;
+    });
   }
 
   @override
@@ -138,14 +156,53 @@ class _PlaceOrderState extends State<PlaceOrder> {
             ),
           ),
           Gap(10),
-          GestureDetector(
-            onTap: () => _openCard,
-            child: customContainer(
-              'select payment method',
-              Icons.keyboard_arrow_down,
-              false,
-            ),
-          ),
+          _savedcardData != null
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GestureDetector(
+                    onTap: () => _editCard(),
+                    child: Column(
+                      children: [
+                        Divider(color: Colors.grey.shade300),
+                        Gap(20),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              "assets/svgs/Mastercard.svg",
+                              width: 38,
+                            ),
+                            Gap(10),
+                            CustomText(
+                              text: "Master Card Ending",
+                              color: Colors.black,
+                              size: 14,
+                            ),
+                            Gap(10),
+                            CustomText(
+                              text:
+                                  "••••${_savedcardData['number'].toString().substring(_savedcardData['number'].length - 2)}",
+                              color: Colors.black,
+                              size: 14,
+                            ),
+                            Spacer(),
+                            SvgPicture.asset("assets/svgs/arrow.svg"),
+                            Gap(10),
+                          ],
+                        ),
+                        Gap(20),
+                        Divider(color: Colors.grey.shade300),
+                      ],
+                    ),
+                  ),
+                )
+              : GestureDetector(
+                  onTap: () => _openCard(context),
+                  child: customContainer(
+                    'select payment method',
+                    Icons.keyboard_arrow_down,
+                    false,
+                  ),
+                ),
           Spacer(),
           ////total row
           Padding(

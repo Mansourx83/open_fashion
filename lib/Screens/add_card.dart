@@ -6,7 +6,8 @@ import 'package:open_fashion/Components/headr.dart';
 import '../components/custom_appbar.dart';
 
 class AddCard extends StatefulWidget {
-  const AddCard({super.key});
+  const AddCard({super.key, this.editData});
+  final dynamic editData;
 
   @override
   State<AddCard> createState() => _AddCardState();
@@ -22,12 +23,25 @@ class _AddCardState extends State<AddCard> {
   final _key = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    // إذا كانت البيانات موجودة، قم بملء المتغيرات بالقيم الموجودة.
+    if (widget.editData != null) {
+      setState(() {
+        cardNumber = widget.editData['number'] ?? '';
+        cardHolderName = widget.editData['name'] ?? '';
+        expiryDate = widget.editData['date'] ?? '';
+        cvvCode = widget.editData['cvv'] ?? '';
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: CustomAppbar(isBlack: false),
-
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),

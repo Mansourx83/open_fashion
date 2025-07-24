@@ -157,6 +157,7 @@ class _AddAddressState extends State<AddAddress> {
                       CustomTextField(
                         label: 'Phone Number',
                         controller: _phoneNumberController,
+                        max: 11,
                         focusNode: FocusNode(),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -165,7 +166,7 @@ class _AddAddressState extends State<AddAddress> {
                           return null;
                         },
                       ),
-                      Gap(180),
+                      Gap(150),
                       // Save button
                       CustomButton(
                         fonudSvg: false,
