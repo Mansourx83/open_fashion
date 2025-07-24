@@ -32,6 +32,7 @@ flutter:
     - assets/svgs/
     - assets/pop/
     - assets/texts/
+    
 
   fonts:
     - family: "TenorSans"

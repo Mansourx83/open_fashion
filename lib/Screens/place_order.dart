@@ -33,6 +33,7 @@ class PlaceOrder extends StatefulWidget {
 
 class _PlaceOrderState extends State<PlaceOrder> {
   dynamic _savedAddress;
+  dynamic _savedcardData;
 
   void _openAddress(context) async {
     final addressData = await Navigator.push(
@@ -63,6 +64,22 @@ class _PlaceOrderState extends State<PlaceOrder> {
     setState(() {
       _savedAddress = newAddress;
     });
+  }
+
+  void _openCard(context) async {
+    final cardData = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return AddCard();
+        },
+      ),
+    );
+    if (cardData != null) {
+      setState(() {
+        _savedcardData = cardData;
+      });
+    }
   }
 
   @override
@@ -122,14 +139,7 @@ class _PlaceOrderState extends State<PlaceOrder> {
           ),
           Gap(10),
           GestureDetector(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return AddCard();
-                },
-              ),
-            ),
+            onTap: () => _openCard,
             child: customContainer(
               'select payment method',
               Icons.keyboard_arrow_down,

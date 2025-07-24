@@ -39,157 +39,161 @@ class _AddAddressState extends State<AddAddress> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppbar(isBlack: false),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Headr(title: 'Add shipping address'),
-          Gap(30),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: CustomAppbar(isBlack: false),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Headr(title: 'Add shipping address'),
+              Gap(30),
 
-          Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
                     children: [
-                      Expanded(
-                        child: CustomTextField(
-                          label: 'First name',
-                          controller: _firstNameController,
-                          focusNode: FocusNode(),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'First name is required';
-                            }
-                            return null;
-                          },
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: CustomTextField(
+                              label: 'First name',
+                              controller: _firstNameController,
+                              focusNode: FocusNode(),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'First name is required';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Gap(10),
+                          Expanded(
+                            child: CustomTextField(
+                              label: 'Last name',
+                              controller: _lastNameController,
+                              focusNode: FocusNode(),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Last name is required';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                       Gap(10),
-                      Expanded(
-                        child: CustomTextField(
-                          label: 'Last name',
-                          controller: _lastNameController,
-                          focusNode: FocusNode(),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Last name is required';
-                            }
-                            return null;
-                          },
-                        ),
+
+                      // Address field
+                      CustomTextField(
+                        label: 'Address',
+                        controller: _addressController,
+                        focusNode: FocusNode(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Address is required';
+                          }
+                          return null;
+                        },
+                      ),
+                      Gap(10),
+
+                      // City field
+                      CustomTextField(
+                        label: 'City',
+                        controller: _cityController,
+                        focusNode: FocusNode(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'City is required';
+                          }
+                          return null;
+                        },
+                      ),
+                      Gap(10),
+
+                      // Row with State and ZIP code
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: CustomTextField(
+                              label: 'State',
+                              controller: _stateController,
+                              focusNode: FocusNode(),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'State is required';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Gap(10),
+                          Expanded(
+                            child: CustomTextField(
+                              label: 'ZIP Code',
+                              controller: _zipCodeController,
+                              focusNode: FocusNode(),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'ZIP Code is required';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Gap(10),
+
+                      // Phone number field
+                      CustomTextField(
+                        label: 'Phone Number',
+                        controller: _phoneNumberController,
+                        focusNode: FocusNode(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Phone Number is required';
+                          }
+                          return null;
+                        },
+                      ),
+                      Gap(180),
+                      // Save button
+                      CustomButton(
+                        fonudSvg: false,
+                        text: 'Add now',
+                        isBorder: BorderRadius.circular(24),
+                        onTap: () {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            final data = {
+                              "firstName": _firstNameController.text,
+                              "lastName": _lastNameController.text,
+                              "address": _addressController.text,
+                              "city": _cityController.text,
+                              "state": _stateController.text,
+                              "zipCode": _zipCodeController.text,
+                              "phone": _phoneNumberController.text,
+                            };
+
+                            Navigator.pop(context, data);
+                          }
+                        },
                       ),
                     ],
                   ),
-                  Gap(10),
-
-                  // Address field
-                  CustomTextField(
-                    label: 'Address',
-                    controller: _addressController,
-                    focusNode: FocusNode(),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Address is required';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(10),
-
-                  // City field
-                  CustomTextField(
-                    label: 'City',
-                    controller: _cityController,
-                    focusNode: FocusNode(),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'City is required';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(10),
-
-                  // Row with State and ZIP code
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          label: 'State',
-                          controller: _stateController,
-                          focusNode: FocusNode(),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'State is required';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      Gap(10),
-                      Expanded(
-                        child: CustomTextField(
-                          label: 'ZIP Code',
-                          controller: _zipCodeController,
-                          focusNode: FocusNode(),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'ZIP Code is required';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  Gap(10),
-
-                  // Phone number field
-                  CustomTextField(
-                    label: 'Phone Number',
-                    controller: _phoneNumberController,
-                    focusNode: FocusNode(),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Phone Number is required';
-                      }
-                      return null;
-                    },
-                  ),
-                  Gap(10),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-
-          // Save button
-          Spacer(),
-          CustomButton(
-            fonudSvg: false,
-            text: 'Add now',
-            onTap: () {
-              if (_formKey.currentState?.validate() ?? false) {
-                final data = {
-                  "firstName": _firstNameController.text,
-                  "lastName": _lastNameController.text,
-                  "address": _addressController.text,
-                  "city": _cityController.text,
-                  "state": _stateController.text,
-                  "zipCode": _zipCodeController.text,
-                  "phone": _phoneNumberController.text,
-                };
-
-                Navigator.pop(context, data);
-              }
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
