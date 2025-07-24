@@ -5,6 +5,7 @@ import 'package:open_fashion/Components/address_display.dart';
 import 'package:open_fashion/Components/cart.dart';
 import 'package:open_fashion/Components/custom_appbar.dart';
 import 'package:open_fashion/Components/custom_button.dart';
+import 'package:open_fashion/Components/custom_dailog.dart';
 import 'package:open_fashion/Components/custom_text.dart';
 import 'package:open_fashion/Components/headr.dart';
 import 'package:open_fashion/Components/shipping_method.dart';
@@ -256,7 +257,21 @@ class _PlaceOrderState extends State<PlaceOrder> {
           ),
           Gap(8),
           ////place order butten
-          CustomButton(fonudSvg: true, text: 'Place order'),
+          CustomButton(
+            fonudSvg: true,
+            text: 'Place order',
+            onTap: () {
+              _savedAddress != null && _savedcardData != null
+                  ? showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        return Dialog(child: CustomDailog());
+                      },
+                    )
+                  : SizedBox.shrink();
+            },
+          ),
         ],
       ),
     );

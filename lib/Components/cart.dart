@@ -40,7 +40,7 @@ class _CartState extends State<Cart> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(widget.image, width: 150),
+        Image.asset(widget.image, width: 120),
         Gap(10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,17 +48,17 @@ class _CartState extends State<Cart> {
             Gap(10),
             CustomText(
               text: widget.name.toUpperCase(),
-              spacing: 4,
+              spacing: 2,
               color: AppColors.primary,
             ),
             Gap(10),
             SizedBox(
-              width: size.width * 0.54,
+              width: size.width * 0.50,
               child: CustomText(
                 text: widget.description.toUpperCase(),
                 color: Colors.grey,
                 size: 11,
-                maxline: 1,
+                maxline: 2,
               ),
             ),
             Gap(30),

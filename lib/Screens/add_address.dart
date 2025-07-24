@@ -166,7 +166,7 @@ class _AddAddressState extends State<AddAddress> {
                           return null;
                         },
                       ),
-                      Gap(150),
+                      Gap(80),
                       // Save button
                       CustomButton(
                         fonudSvg: false,

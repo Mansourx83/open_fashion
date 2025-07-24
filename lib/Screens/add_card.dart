@@ -116,7 +116,7 @@ class _AddCardState extends State<AddCard> {
                     ),
                   ),
                 ),
-                Gap(80),
+                Gap(70),
                 CustomButton(
                   isBorder: BorderRadius.circular(24),
                   fonudSvg: false,
