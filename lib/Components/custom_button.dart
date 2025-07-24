@@ -59,7 +59,7 @@ class CustomButton extends StatelessWidget {
               if (fonudSvg) Gap(10),
               CustomText(
                 text: text.toUpperCase(),
-                size: 17,
+                size: 15,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),

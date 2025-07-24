@@ -15,7 +15,7 @@ class CustomDailog extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: double.infinity,
-      height: 480,
+      height: 500,
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -76,8 +76,7 @@ class CustomDailog extends StatelessWidget {
                 SvgPicture.asset("assets/pop/emogi3.svg"),
               ],
             ),
-
-            Spacer(),
+            Gap(20),
             Row(
               children: [
                 Expanded(
