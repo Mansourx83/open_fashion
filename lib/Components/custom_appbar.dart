@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:open_fashion/core/colors.dart';
+import 'package:open_fashion/Screens/search_screen.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({super.key, required this.isBlack});
@@ -26,9 +27,17 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
         ),
         centerTitle: true,
         actions: [
-          SvgPicture.asset(
-            "assets/svgs/Search.svg",
-            color: isBlack ? Colors.white : AppColors.primary,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SearchScreen()),
+              );
+            },
+            child: SvgPicture.asset(
+              "assets/svgs/Search.svg",
+              color: isBlack ? Colors.white : AppColors.primary,
+            ),
           ),
           Gap(20),
           SvgPicture.asset(

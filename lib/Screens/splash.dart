@@ -18,13 +18,11 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
 
-   
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 2),
     );
 
-    
     _fadeInAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -35,17 +33,22 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       end: 1.0,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
 
-    
     _controller.forward();
 
-    
-    Future.delayed(
-      Duration(seconds: 3),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (c) => Home()),
-      ),
-    );
+    // Use WidgetsBinding to ensure navigation happens after the first frame is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(
+        Duration(seconds: 4), // Adjust to match the animation duration
+        () {
+          if (mounted) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          }
+        },
+      );
+    });
   }
 
   @override
@@ -66,7 +69,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _controller.dispose(); 
+    _controller.dispose();
     super.dispose();
   }
 }

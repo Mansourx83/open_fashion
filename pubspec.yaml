@@ -16,6 +16,7 @@ dependencies:
   flutter_svg: ^2.2.0
   gap: ^3.0.1
   ionicons: ^0.2.2
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
@@ -39,6 +40,9 @@ flutter:
     - assets/svgs/
     - assets/pop/
     - assets/texts/
+    - assets/vec/
+    
+    
 
   fonts:
     - family: "TenorSans"

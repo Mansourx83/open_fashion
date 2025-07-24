@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:open_fashion/Screens/home.dart';
 
 import 'custom_button.dart';
 import 'custom_text.dart';
