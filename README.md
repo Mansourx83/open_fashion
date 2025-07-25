@@ -2,7 +2,7 @@
 
 <!-- Preview Image -->
 <p align="center">
-  <img src="assets/Preview.png" alt="App Preview" width="400"/>
+  <img src="assets/Preview.png" alt="App Preview" style="width:100%;max-width:1000px;display:block;margin:auto;"/>
 </p>
 
 Open Fashion is a modern e-commerce Flutter application for fashion and accessories. The app provides a smooth shopping experience, allowing users to browse products, add shipping addresses, select payment methods, and place orders easily.
@@ -21,11 +21,14 @@ Open Fashion is a modern e-commerce Flutter application for fashion and accessor
 
 ## Screenshots
 
-<!--
-Add screenshots of your app here. Example:
+<p align="center">
+  <img src="assets/Add New Card.png" alt="Home Screen" width="250" style="margin:8px;"/>
+  <img src="assets/Checkout (1).png" alt="Product Details" width="250" style="margin:8px;"/>
+  <img src="assets/Checkout.png" alt="Checkout Screen" width="250" style="margin:8px;"/>
+</p>
 
-![Home Screen](assets/screenshots/home.png)
-![Product Details](assets/screenshots/product.png)
+<!--
+If your images are in a different path, update the src attribute accordingly.
 -->
 
 ## Getting Started
