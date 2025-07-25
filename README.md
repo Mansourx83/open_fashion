@@ -2,10 +2,11 @@
 
 <!-- Preview Image -->
 <p align="center">
-  <img src="assets/Preview.png" alt="App Preview" style="width:100%;max-width:1000px;display:block;margin:auto;"/>
+  <img src="assets/screen shot/Preview.png" alt="App Preview" style="width:100%;max-width:1000px;display:block;margin:auto;"/>
 </p>
 
-Open Fashion is a modern e-commerce Flutter application for fashion and accessories. The app provides a smooth shopping experience, allowing users to browse products, add shipping addresses, select payment methods, and place orders easily.
+## Overview
+Open Fashion is a modern, user-friendly e-commerce app built with Flutter, designed for seamless shopping of fashion products and accessories. The app allows users to browse a curated collection of abayas, rings, earrings, boots, and more, with detailed product information and high-quality images. Users can easily add and manage shipping addresses, select payment methods, and complete their orders through a smooth and intuitive checkout process. The app features a clean, responsive design and reusable UI components, making it both visually appealing and easy to use.
 
 ## Features
 
@@ -21,10 +22,14 @@ Open Fashion is a modern e-commerce Flutter application for fashion and accessor
 
 ## Screenshots
 
+
+<!-- Live app screenshots -->
 <p align="center">
-  <img src="assets/Add New Card.png" alt="Home Screen" width="250" style="margin:8px;"/>
-  <img src="assets/Checkout (1).png" alt="Product Details" width="250" style="margin:8px;"/>
-  <img src="assets/Checkout.png" alt="Checkout Screen" width="250" style="margin:8px;"/>
+  <img src="assets/screen shot/1.png" alt="Live 1" width="180" style="margin:10px;"/>
+  <img src="assets/screen shot/2.png" alt="Live 2" width="180" style="margin:10px;"/>
+  <img src="assets/screen shot/3.png" alt="Live 3" width="180" style="margin:10px;"/>
+  <img src="assets/screen shot/4.png" alt="Live 4" width="180" style="margin:10px;"/>
+  <img src="assets/screen shot/5.png" alt="Live 5" width="180" style="margin:10px;"/>
 </p>
 
 <!--
