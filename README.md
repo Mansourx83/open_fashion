@@ -25,7 +25,7 @@ Open Fashion is a modern, user-friendly e-commerce app built with Flutter, desig
 
 <!-- Live app screenshots -->
 <p align="center">
-  <img src="assets/screen shot/1.png" alt="Live 1" width="180" style="margin:10px;"/>
+<!--   <img src="assets/screen shot/1.png" alt="Live 1" width="180" style="margin:10px;"/> -->
   <img src="assets/screen shot/2.png" alt="Live 2" width="180" style="margin:10px;"/>
   <img src="assets/screen shot/3.png" alt="Live 3" width="180" style="margin:10px;"/>
   <img src="assets/screen shot/4.png" alt="Live 4" width="180" style="margin:10px;"/>
@@ -66,12 +66,6 @@ lib/
 ## Assets
 - Product images, icons, and SVGs are located in the `assets/` directory.
 - Fonts are in `assets/fonts/`.
-
-## Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-[MIT](LICENSE)
 
 ---
 
