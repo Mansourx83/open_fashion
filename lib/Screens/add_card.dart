@@ -3,7 +3,9 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:gap/gap.dart';
 import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/headr.dart';
+import 'package:open_fashion/core/colors.dart';
 import '../components/custom_appbar.dart';
+import 'package:open_fashion/Models/user_data.dart';
 
 class AddCard extends StatefulWidget {
   const AddCard({super.key, this.editData});
@@ -42,6 +44,45 @@ class _AddCardState extends State<AddCard> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: CustomAppbar(isBlack: false),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  (UserData.firstName != null && UserData.lastName != null)
+                      ? '${UserData.firstName} ${UserData.lastName}'
+                      : 'User Name',
+                ),
+                accountEmail: null,
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('assets/vec/user.jpg'),
+                ),
+                decoration: BoxDecoration(color: AppColors.primary),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Address: ${UserData.address ?? "Address"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.location_city),
+                title: Text('City: ${UserData.city ?? "City"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.map),
+                title: Text('State: ${UserData.state ?? "State"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.markunread_mailbox),
+                title: Text('ZIP Code: ${UserData.zipCode ?? "ZIP Code"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.phone),
+                title: Text('Phone: ${UserData.phone ?? "Phone"}'),
+              ),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),

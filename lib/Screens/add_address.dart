@@ -4,6 +4,8 @@ import 'package:open_fashion/Components/custom_appbar.dart';
 import 'package:open_fashion/Components/custom_button.dart';
 import 'package:open_fashion/Components/custom_textfiled.dart';
 import 'package:open_fashion/Components/headr.dart';
+import 'package:open_fashion/core/colors.dart';
+import 'package:open_fashion/Models/user_data.dart';
 
 class AddAddress extends StatefulWidget {
   const AddAddress({super.key, this.editData});
@@ -43,6 +45,45 @@ class _AddAddressState extends State<AddAddress> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: CustomAppbar(isBlack: false),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(
+                  (UserData.firstName != null && UserData.lastName != null)
+                      ? '${UserData.firstName} ${UserData.lastName}'
+                      : 'User Name',
+                ),
+                accountEmail: null,
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('assets/vec/user.jpg'),
+                ),
+                decoration: BoxDecoration(color: AppColors.primary),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Address: ${UserData.address ?? "Address"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.location_city),
+                title: Text('City: ${UserData.city ?? "City"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.map),
+                title: Text('State: ${UserData.state ?? "State"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.markunread_mailbox),
+                title: Text('ZIP Code: ${UserData.zipCode ?? "ZIP Code"}'),
+              ),
+              ListTile(
+                leading: Icon(Icons.phone),
+                title: Text('Phone: ${UserData.phone ?? "Phone"}'),
+              ),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,8 +223,9 @@ class _AddAddressState extends State<AddAddress> {
                               "state": _stateController.text,
                               "zipCode": _zipCodeController.text,
                               "phone": _phoneNumberController.text,
+                              "imagePath": 'assets/cover/cover1.png',
                             };
-
+                            UserData.setAddressData(data);
                             Navigator.pop(context, data);
                           }
                         },

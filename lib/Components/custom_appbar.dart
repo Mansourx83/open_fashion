@@ -17,9 +17,14 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: isBlack ? AppColors.primary : Colors.white,
         leadingWidth: 25,
-        leading: SvgPicture.asset(
-          "assets/svgs/Menu.svg",
-          color: isBlack ? Colors.white : AppColors.primary,
+        leading: Builder(
+          builder: (context) => GestureDetector(
+            onTap: () => Scaffold.of(context).openDrawer(),
+            child: SvgPicture.asset(
+              "assets/svgs/Menu.svg",
+              color: isBlack ? Colors.white : AppColors.primary,
+            ),
+          ),
         ),
         title: SvgPicture.asset(
           "assets/logo/logo-bg.svg",
@@ -40,10 +45,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Gap(20),
-          SvgPicture.asset(
-            "assets/svgs/shopping bag.svg",
-            color: isBlack ? Colors.white : AppColors.primary,
-          ),
+          // SvgPicture.asset(
+          //   "assets/svgs/shopping bag.svg",
+          //   color: isBlack ? Colors.white : AppColors.primary,
+          // ),
         ],
       ),
     );

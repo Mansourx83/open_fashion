@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:open_fashion/Screens/checkout.dart';
 import '../Models/product_model.dart';
 import '../Components/custom_text.dart';
 
@@ -114,22 +115,37 @@ class _SearchScreenState extends State<SearchScreen> {
                     itemCount: _results.length,
                     itemBuilder: (context, index) {
                       final item = _results[index];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(item.image),
-                          SizedBox(height: 10),
-                          CustomText(text: item.name, color: Colors.black),
-                          CustomText(
-                            text: item.description,
-                            size: 12,
-                            color: Colors.grey,
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Checkout(
+                                name: item.name,
+                                image: item.image,
+                                price: item.price,
+                                description: item.description,
+                              );
+                            },
                           ),
-                          CustomText(
-                            text: "\$ ${item.price.toString()}",
-                            color: const Color.fromARGB(189, 239, 154, 154),
-                          ),
-                        ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(item.image),
+                            SizedBox(height: 10),
+                            CustomText(text: item.name, color: Colors.black),
+                            CustomText(
+                              text: item.description,
+                              size: 12,
+                              color: Colors.grey,
+                            ),
+                            CustomText(
+                              text: "\$ ${item.price.toString()}",
+                              color: const Color.fromARGB(189, 239, 154, 154),
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
